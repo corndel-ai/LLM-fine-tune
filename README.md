@@ -19,6 +19,12 @@ precision and trains a LoRA adapter. The final adapter ZIP is created in
 Colab's temporary `/content` storage; downloading it is optional and disabled
 by default.
 
+The default quick run uses up to 20 training steps, accumulating gradients over
+2 batches per step, with 512-token blocks and evaluation/checkpoints every
+10 steps. Full held-out validation runs before, during, and after training;
+it can still take noticeable time. Adjust the settings in Section 3 for a
+longer experiment.
+
 Colab runtimes are temporary and have dynamic resource limits:
 https://research.google.com/colaboratory/faq.html
 
@@ -48,10 +54,12 @@ teaching repository is not approved or endorsed by the OECD.
 The generation helper can be checked on CPU with a tiny randomly initialised
 model, without downloading Phi-3 or running training. The test executes the
 helper directly from the notebook and checks chat inputs and response slicing.
+A second check constructs the notebook's training arguments on CPU and verifies
+the 5% warmup schedule.
 In a separate virtual environment, run:
 
 ```sh
-python -m pip install transformers==5.16.1 torch
+python -m pip install transformers==5.16.1 accelerate==1.15.0 torch
 python -m unittest discover -s tests -v
 ```
 
