@@ -203,6 +203,11 @@ cython_debug/
 # Temporary file for partial code execution
 tempCodeRunnerFile.py
 
+# Generated notebook artefacts and model/data outputs
+artifacts/
+data/oecd_dapt.jsonl
+outputs/
+
 # Ruff stuff:
 .ruff_cache/
 
