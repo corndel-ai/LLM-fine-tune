@@ -42,3 +42,17 @@ The included OECD PDFs are separate third-party materials and are **not**
 covered by the MIT License. See [OECD_MATERIALS.md](OECD_MATERIALS.md) for each
 document's official DOI and the applicable OECD terms. This independent
 teaching repository is not approved or endorsed by the OECD.
+
+## Local regression check
+
+The generation helper can be checked on CPU with a tiny randomly initialised
+model, without downloading Phi-3 or running training. The test executes the
+helper directly from the notebook and checks chat inputs and response slicing.
+In a separate virtual environment, run:
+
+```sh
+python -m pip install transformers==5.16.1 torch
+python -m unittest discover -s tests -v
+```
+
+This check does not replace a complete GPU run in Colab.
